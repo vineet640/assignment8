@@ -81,11 +81,10 @@ def insert_word(s, hash_table):
     for _ in range(len(hash_table)):
         if hash_table[c] == s:
             return
-        elif hash_table[c] == "":
+        if hash_table[c] == "":
             hash_table[c] = s
             return
-        else:
-            c = (step_size(s) + c) % len(hash_table)
+        c = (step_size(s) + c) % len(hash_table)
 
 
 
@@ -103,10 +102,9 @@ def find_word(s, hash_table):
     for _ in range(len(hash_table)):
         if hash_table[c] == "":
             return False
-        elif hash_table[c] == s:
+        if hash_table[c] == s:
             return True
-        else:
-            c = (c + step_size(s)) % len(hash_table)
+        c = (c + step_size(s)) % len(hash_table)
     return False
 
 
@@ -147,8 +145,7 @@ def get_longest_words(string_list):
 
     maxx = 0
     for word in string_list:
-        if len(word) > maxx:
-            maxx = len(word)
+        maxx = max(maxx, len(word))
 
     longest = []
 
